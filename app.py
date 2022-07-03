@@ -14,7 +14,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 ##__________________________________________
 #Load Dataframe
 # limit nb customer to fater testing
-rows = st.slider("Number of total customers ", 5, 10, 100)
+rows = st.sidebar.slider("Number of total customers ", 5, 100, 10)
 #rows=50
 
 x_test = pd.read_csv('./x_test.csv', nrows=rows).set_index('SK_ID_CURR')
