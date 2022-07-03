@@ -14,7 +14,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 ##__________________________________________
 #Load Dataframe
 # limit nb customer to fater testing
-rows=5
+rows=50
 
 x_test = pd.read_csv('./x_test.csv', nrows=rows).set_index('SK_ID_CURR')
 y_test = pd.read_csv('./y_test.csv', nrows=rows).set_index('SK_ID_CURR')
