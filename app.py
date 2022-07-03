@@ -13,8 +13,11 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
  
 ##__________________________________________
 #Load Dataframe
+
+st.sidebar.title("Filtre")
+
 # limit nb customer to fater testing
-rows = st.sidebar.slider("Number of total customers ", 5, 100, 10)
+rows = st.sidebar.slider("Selection nombre Max de clients ", 5, 100, 10)
 #rows=50
 
 x_test = pd.read_csv('./x_test.csv', nrows=rows).set_index('SK_ID_CURR')
@@ -35,8 +38,6 @@ df_customer = pd.read_csv('./df_customer.csv').set_index('SK_ID_CURR')
 
 ##__________________________________________
 ## Start repoting
-
-st.sidebar.title("Filtre")
 
 st.sidebar.subheader(f'Les informations du client')
 st.write('''# Scoring App: Approbation d'un prêt
@@ -119,7 +120,6 @@ shap_summary_4()
 st.write('''### Customer information''')
 st.write(df_customer)
 
-st.sidebar.subheader(f'Recherche de informations sur un client')
 st.sidebar.text(df_customer.iloc[index,:])
 
 ##__________________________________________
