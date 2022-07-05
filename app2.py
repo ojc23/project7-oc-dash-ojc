@@ -102,7 +102,7 @@ proba = prediction(index)
 ##__________________________________________
 
 st.write(f'Le client selectionné est le :', df_0[0])
-st.write(f'La probabilite de remboursement est de :', round(df_0[1]*100,1),'% ', 'check from (API) ', proba,'%')
+st.write(f'La probabilite de remboursement est de :', round(df_0[1]*100,1),'% ', ' check from (API) ', proba,'%')
 st.write(f'Peut on accorder un pret :', 'Oui' if df_0[2]==1 else 'Non')
 
 ##__________________________________________
@@ -173,3 +173,9 @@ def shap_summary():
 	shap.summary_plot(shap_values[:rows], x_test)
 	st.pyplot()
 shap_summary() 
+
+
+
+
+
+
