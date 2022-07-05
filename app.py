@@ -77,7 +77,7 @@ df_f=feature_importance()
 
 
 ##__________________________________________
-
+# get information from API
 def prediction(id_custo):
     url ='https://project7-api-ojc.herokuapp.com'
     headers = {'Content-Type': 'application/json'}
@@ -102,8 +102,13 @@ proba = prediction(index)
 ##__________________________________________
 
 st.write(f'Le client selectionné est le :', df_0[0])
-st.write(f'La probabilite de remboursement est de :', round(df_0[1]*100,1),'% ', 'check from (API) ', proba,'%')
+
+link = '[API](https://project7-api-ojc.herokuapp.com/?id_custo='+str(index)+')'
+st.write(f'La probabilite de remboursement est de :', round(df_0[1]*100,1),'% ', 
+		' check from (API) ', proba,'%',  )
+st.markdown(link, unsafe_allow_html=True)
 st.write(f'Peut on accorder un pret :', 'Oui' if df_0[2]==1 else 'Non')
+
 
 ##__________________________________________
 st.write('''### Decision Explanation ''')
@@ -173,3 +178,9 @@ def shap_summary():
 	shap.summary_plot(shap_values[:rows], x_test)
 	st.pyplot()
 shap_summary() 
+
+
+
+
+
+
