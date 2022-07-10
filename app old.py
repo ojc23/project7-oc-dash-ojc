@@ -177,42 +177,8 @@ def shap_summary():
 	#summary_plot
 	shap.summary_plot(shap_values[:rows], x_test)
 	st.pyplot()
-shap_summary()
+shap_summary() 
 
-expander_client = st.expander("informations sur les clients similaires")
-
-expander_client.write(f'### Comparaison entre des clients du meme genre (F/M) au {df_0[0]}')
-feature_name = expander_client.selectbox('Selecting feature name :',
-                                ["CODE_GENDER",
-                                 "NAME_FAMILY_STATUS",
-                                 "NAME_HOUSING_TYPE",
-                                 "NAME_CONTRACT_TYPE",
-                                 "NAME_INCOME_TYPE",
-                                 "OCCUPATION_TYPE"])
-if feature_name=='CODE_GENDER':
-	customer = df_0[0]
-	genre = (df_customer.query("SK_ID_CURR == @customer")['CODE_GENDER'].tolist())
-	st.write('Genre ', genre[0])
-	df_customer = df_customer[df_customer['CODE_GENDER']==genre[0]]
-	data_feature = df_customer["OCCUPATION_TYPE"].value_counts(normalize=True)
-	data_feature_2 = df_customer["NAME_FAMILY_STATUS"].value_counts(normalize=True)
-	data_feature_3 = df_customer["NAME_CONTRACT_TYPE"].value_counts(normalize=True)
-	data_feature_4 = df_customer["NAME_HOUSING_TYPE"].value_counts(normalize=True)
-	expander_client.bar_chart(data_feature)
-	expander_client.bar_chart(data_feature_2)
-	expander_client.bar_chart(data_feature_3)
-	expander_client.bar_chart(data_feature_4)
-else:
-	data_feature = df_customer[feature_name].value_counts(normalize=True)
-	expander_client.bar_chart(data_feature)
-
-#customer = df_0[0]
-#genre = (df_customer.query("SK_ID_CURR == @customer")['CODE_GENDER'].tolist())
-#st.text(df_customer.query("SK_ID_CURR == @customer")['CODE_GENDER'])
-#st.text(df_customer['OCCUPATION_TYPE'].query("SK_ID_CURR == @customer")['OCCUPATION_TYPE'])
-#st.text(df_customer.query("CODE_GENDER == @genre"))
-
-#st.text(df_customer[df_customer['CODE_GENDER']==genre[0]])
 
 
 
